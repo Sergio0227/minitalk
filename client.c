@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sandre-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 18:55:23 by sandre-a          #+#    #+#             */
-/*   Updated: 2024/02/28 18:55:41 by sandre-a         ###   ########.fr       */
+/*   Created: 2024/06/05 13:30:33 by sandre-a          #+#    #+#             */
+/*   Updated: 2024/06/06 17:42:26 by sandre-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+#include "minitalk.h"
+
+int main(void)
 {
-	write(fd, &c, 1);
-	return (1);
+	ft_printf("I am the client");
 }

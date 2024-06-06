@@ -5,7 +5,7 @@
             "name": "C Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/minitalk",
+            "program": "${fileDirname}/client",
             "args": [], // Args
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

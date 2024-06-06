@@ -7,10 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${fileDirname}/*.c",
+                "${fileDirname}/client.c",
                 "${fileDirname}/libft/*.c",
                 "-o",
-                "${fileDirname}/minitalk"
+                "${fileDirname}/client"
             ],
             "options": {
                 "cwd": "${fileDirname}"
