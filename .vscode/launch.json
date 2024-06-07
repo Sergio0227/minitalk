@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/client",
-            "args": [], // Args
+            "args": [231123, "Hey"], // Args
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

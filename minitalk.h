@@ -6,7 +6,7 @@
 /*   By: sandre-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:30:45 by sandre-a          #+#    #+#             */
-/*   Updated: 2024/06/07 13:37:57 by sandre-a         ###   ########.fr       */
+/*   Updated: 2024/06/07 19:38:42 by sandre-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@
 # define BOLD_WHITE "\033[1m\033[37m"
 
 # include "libft/libft.h"
+# include <signal.h>
 
 #endif
