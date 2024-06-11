@@ -6,7 +6,7 @@
 /*   By: sandre-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:30:33 by sandre-a          #+#    #+#             */
-/*   Updated: 2024/06/08 17:29:38 by sandre-a         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:58:06 by sandre-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 		ft_printf(BOLD_YELLOW "Please provide the PID to the program\n");
 	else if (argc == 2)
 		ft_printf(BOLD_YELLOW "Please, provide the message as an argument\n");
-	else
+	else if (argc == 3)
 	{
 		i = -1;
 		message = store_msg_bits(argv[2]);
