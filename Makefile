@@ -7,6 +7,7 @@ NAME = minitalk
 CC = cc
 CFLAGS = -Werror -Wextra -Wall
 LIBFT_PATH = ./libft
+BONUS = _bonus
 RM = rm -f
 
 # Define colors
@@ -44,6 +45,16 @@ ${NAME}:
 		echo "$(CYAN)[SERVER]:$(DEF_COLOR) exec file $(GREEN) \t=> Created!$(DEF_COLOR)"; \
 	fi
 
+bonus: libft
+	${CC} ${CFLAGS} ${CLIENT}${BONUS}.c -o ${CLIENT}${BONUS} -L${LIBFT_PATH} -lft
+	if [ "$(CLIENT)$(BONUS)" ]; then \
+		echo "$(ORANGE)[CLIENT_BONUS]:$(DEF_COLOR) exec file $(GREEN) \t=> Created!$(DEF_COLOR)"; \
+	fi
+	${CC} ${CFLAGS} ${SERVER}${BONUS}.c -o ${SERVER}${BONUS} -L${LIBFT_PATH} -lft
+	if [ "$(SERVER)$(BONUS)" ]; then \
+		echo "$(CYAN)[SERVER_BONUS]:$(DEF_COLOR) exec file $(GREEN) \t=> Created!$(DEF_COLOR)"; \
+	fi
+
 run: all
 	echo "\n";
 	./server;
@@ -53,12 +64,18 @@ clean:
 	echo -n "$(CYAN)[LIBFT]:$(DEF_COLOR) object files$(RED) \t => Removed!$(DEF_COLOR)\n"
 
 fclean:
-	${MAKE} -C ${LIBFT_PATH} fclean > /dev/null 2>&1
-	${RM} ${CLIENT}
-	${RM} ${SERVER}
+	if [ -f "${CLIENT}${BONUS}" ]; then \
+		echo -n "$(CYAN)[minitalk_bonus]:$(DEF_COLOR) exec. files$(RED)  => Removed!$(DEF_COLOR)\n"; \
+		${RM} ${CLIENT}${BONUS}; \
+		${RM} ${SERVER}${BONUS}; \
+	fi
+	if [ -f "${CLIENT}" ]; then \
+		echo -n "$(CYAN)[minitalk]:$(DEF_COLOR) exec. files$(RED)  => Removed!$(DEF_COLOR)\n"; \
+		${RM} ${CLIENT}; \
+		${RM} ${SERVER}; \
+	fi
 	${RM} -rf ${LIBFT_PATH}
 	echo -n "$(CYAN)[LIBFT]:$(DEF_COLOR)    folder$(RED)    \t => Removed!$(DEF_COLOR)\n"
-	echo -n "$(CYAN)[minitalk]:$(DEF_COLOR) exec. files$(RED)  => Removed!$(DEF_COLOR)\n"
 
 re: fclean all
 

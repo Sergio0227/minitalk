@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sandre-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:30:33 by sandre-a          #+#    #+#             */
-/*   Updated: 2024/06/08 17:29:38 by sandre-a         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:21:00 by sandre-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,33 @@ static char	**store_msg_bits(char *str)
 	return (message);
 }
 
+static void	send_client_pid(int server_pid)
+{
+	static int	i = -1;
+	int			x;
+	char		*pid;
+	char		**pid_bits;
+
+	if (i == -1)
+	{
+		pid = ft_itoa(getpid());
+		pid_bits = malloc(sizeof(char *) * (ft_strlen(pid) + 2));
+		while (pid[++i])
+			pid_bits[i] = char_to_bit(pid[i]);
+		pid_bits[i] = char_to_bit('\a');
+		pid_bits[i + 1] = 0;
+		i = -1;
+		while (pid_bits[++i])
+		{
+			x = 0;
+			while (pid_bits[i][x])
+				send_signal(server_pid, pid_bits[i][x++]);
+		}
+	}
+	else 
+		ft_printf("Message received\n");
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -70,6 +97,7 @@ int	main(int argc, char **argv)
 	{
 		i = -1;
 		message = store_msg_bits(argv[2]);
+		signal(SIGUSR2, send_client_pid);
 		while (message[++i])
 		{
 			x = 0;
@@ -77,6 +105,7 @@ int	main(int argc, char **argv)
 				send_signal(ft_atoi(argv[1]), message[i][x++]);
 			free(message[i]);
 		}
+		send_client_pid(ft_atoi(argv[1]));
 		free(message);
 	}
 	return (0);

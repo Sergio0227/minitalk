@@ -7,10 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${fileDirname}/client.c",
+                "${fileDirname}/server.c",
                 "${fileDirname}/libft/*.c",
                 "-o",
-                "${fileDirname}/client"
+                "${fileDirname}/server"
             ],
             "options": {
                 "cwd": "${fileDirname}"

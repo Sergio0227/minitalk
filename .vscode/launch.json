@@ -5,8 +5,8 @@
             "name": "C Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/client",
-            "args": [231123, "Hey"], // Args
+            "program": "${fileDirname}/server",
+            "args": [], // Args
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
