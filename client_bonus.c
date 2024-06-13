@@ -6,7 +6,7 @@
 /*   By: sandre-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:30:33 by sandre-a          #+#    #+#             */
-/*   Updated: 2024/06/11 14:58:18 by sandre-a         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:50:35 by sandre-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,26 @@ static void	send_client_pid(int server_pid)
 	char		*pid;
 	char		**pid_bits;
 
-	if (i == -1)
-	{
-		pid = ft_itoa(getpid());
-		pid_bits = malloc(sizeof(char *) * (ft_strlen(pid) + 2));
-		while (pid[++i])
-			pid_bits[i] = char_to_bit(pid[i]);
-		pid_bits[i] = char_to_bit('\a');
-		pid_bits[i + 1] = 0;
-		i = -1;
-		while (pid_bits[++i])
-		{
-			x = 0;
-			while (pid_bits[i][x])
-				send_signal(server_pid, pid_bits[i][x++]);
-		}
-	}
-	else
+	if (i != -1)
 		ft_printf("Message received\n");
+	if (i != -1)
+		return ;
+	pid = ft_itoa(getpid());
+	pid_bits = malloc(sizeof(char *) * (ft_strlen(pid) + 2));
+	while (pid[++i])
+		pid_bits[i] = char_to_bit(pid[i]);
+	pid_bits[i] = char_to_bit('\a');
+	pid_bits[i + 1] = 0;
+	i = -1;
+	while (pid_bits[++i])
+	{
+		x = 0;
+		while (pid_bits[i][x])
+			send_signal(server_pid, pid_bits[i][x++]);
+		free(pid_bits[i]);
+	}
+	free(pid_bits);
+	free(pid);
 }
 
 int	main(int argc, char **argv)
